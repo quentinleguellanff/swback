@@ -1,5 +1,5 @@
 export default (sequelize, DataTypes) => {
-    return sequelize.define('User_foodstuff', {
+    return sequelize.define('recipe_foodstuff', {
       quantity_g: {
         type: DataTypes.INTEGER,
       },

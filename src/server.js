@@ -1,8 +1,9 @@
 import express from "express";
 import routes from "./routes";
-import sequelize from "./db/sequelize";
+import {initDb} from "./db/sequelize";
 
 export function launch(port) {
+ 
   const application = express();
   
   application.use(express.json()) // for parsing application/json

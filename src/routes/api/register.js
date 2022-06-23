@@ -1,18 +1,17 @@
 import { Router } from "express";
-import { user } from '../../db/sequelize'
+import { User } from '../../db/sequelize'
 import { Op } from "sequelize";
 
 const api = Router();
 
-api.post("/", async (request, response) => {
-    const users = await user.findAll()
+api.post("/register", async (request, response) => {
     if(request.body.email && request.body.password && request.body.passwordConfirm && request.body.pseudo){
         if(request.body.password !== request.body.passwordConfirm){
             response.status(400).json({
                 message : "wrong parameters"
             })
         } else {
-            const isUserExist = await user.findOne(
+            const isUserExist = await User.findOne(
                 {
                     where: {
                         [Op.or]: [
@@ -28,7 +27,7 @@ api.post("/", async (request, response) => {
                 })
             }
             else {
-                const newUser = await user.create({ email: request.body.email, pseudo: request.body.pseudo, password: request.body.password, image: request.body.image})
+                const newUser = await User.create({ email: request.body.email, pseudo: request.body.pseudo, password: request.body.password, image: request.body.image})
                 response.status(201).json({
                     newUser
                   })

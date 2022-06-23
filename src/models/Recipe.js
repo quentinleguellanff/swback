@@ -20,7 +20,10 @@ export default (sequelize, DataTypes) => {
       },
       type: {
         type: DataTypes.STRING
-      }
+      },
+      duration_min: {
+        type: DataTypes.INTEGER
+      },
     }, {
 
     })
