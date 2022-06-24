@@ -24,6 +24,7 @@ User.belongsToMany(Foodstuff, { through: User_foodstuff})
 Foodstuff.belongsToMany(User, {through: User_foodstuff })
 Foodstuff.belongsToMany(Category, { through: 'foodstuffs_category' })
 Category.belongsToMany(Recipe, { through: Recipe_foodstuff })
+Recipe.belongsToMany(Category, { through: Recipe_foodstuff })
 
 const initDb = async () => {
     try {

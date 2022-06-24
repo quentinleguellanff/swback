@@ -21,6 +21,8 @@ api.post("/ingredient", async (request, response) => {
 
         categoriesToAdd.forEach(async category => {
             
+            category.name = category.name.replace(/\s/g, '');
+
             let categoryToAdd = await isCategoryExist(category)
             
             if(!categoryToAdd){
